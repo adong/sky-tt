@@ -4,7 +4,7 @@
 
 A classic plane shooter: fly a toy plane, bonk zombie blimps and bosses, and call your brother as a wingman. 10 stages, 1 or 2 players.
 
-**中文：** 经典飞机射击：开着玩具飞机打僵尸飞艇和大 Boss，叫兄弟来当僚机。10 关，单人或双人。
+**中文：** 经典飞机射击：开着玩具飞机打僵尸飞艇和大魔王，叫兄弟来当僚机。10 关，单人或双人。
 
 Press **?** any time (or tap the round **?** button on the left edge) to see the keys. The game waits while you look.
 Tap the language button under it (the A文 icon) to switch between English and 中文; the dashboard and every game remember the choice.
