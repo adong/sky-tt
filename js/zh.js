@@ -3,7 +3,7 @@
    The kids' names and the game's name (SKY TT) stay in English on purpose. */
 (function () {
   const L = Kit.lang;
-  L.keep(['TEDDY', 'TOMMY', 'Teddy', 'Tommy', 'TEDDY & TOMMY', 'TEDDY + TOMMY', 'SKY', 'SKY TT', 'TT', 'Claude Code',
+  L.keep(['TEDDY', 'TOMMY', 'Teddy', 'Tommy', 'TEDDY & TOMMY', 'TEDDY + TOMMY', 'SKY', 'SKY TT', 'Sky TT', 'TT', 'Claude Code',
     'TOMMY 2P', 'Teddy (1P)', 'Tommy (2P)', 'Esc']);
 
   const STAGES = {

@@ -1205,7 +1205,7 @@
   }
 
   function setupTitle() {
-    $('logoMain').innerHTML = SKY.TITLE.replace(/TT/, '<span class="a">T</span><span class="b">T</span>');
+    $('logoMain').innerHTML = SKY.TITLE.toUpperCase().replace(/TT/, '<span class="a">T</span><span class="b">T</span>');
     document.title = `${SKY.TITLE} · Teddy & Tommy`;
     document.querySelectorAll('[data-face]').forEach((img) => { img.src = faces[img.dataset.face]; });
     document.querySelectorAll('[data-play]').forEach((b) => b.addEventListener('click', () => {

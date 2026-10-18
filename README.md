@@ -2,8 +2,11 @@
 
 [![Sky TT title screen](docs/screenshot.jpg)](https://adong.github.io/sky-tt/)
 
-Press **?** any time (or tap the round **?** button on the left edge) to see the keys. The game waits while you look.
+A classic plane shooter: fly a toy plane, bonk zombie blimps and bosses, and call your brother as a wingman. 10 stages, 1 or 2 players.
 
+**中文：** 经典飞机射击：开着玩具飞机打僵尸飞艇和大 Boss，叫兄弟来当僚机。10 关，单人或双人。
+
+Press **?** any time (or tap the round **?** button on the left edge) to see the keys. The game waits while you look.
 Tap the language button under it (the A文 icon) to switch between English and 中文; the dashboard and every game remember the choice.
 
 A classic vertical shoot-'em-up for Teddy and Tommy, the kind Dad played in the arcade, made for small hands and best played together. It's built with Claude Code from plain JavaScript and Three.js, on the shared Claude Games kit.
@@ -11,7 +14,7 @@ The brothers fly bright toy planes up the screen, each one sitting in his open c
 There are no image, model or audio files: the planes, enemies and places are built from boxes and balls, every texture is painted on a canvas, and every sound is synthesised.
 It's silly, not war-like: Teddy fires 🏀 basketballs, Tommy fires ✌️ peace signs, and the zombie blimps, robot drones, UFOs and grumpy clouds go BONK! and pop into fruit, coins and stars.
 
-"Sky TT" is a working title. It lives in one constant, `SKY.TITLE` in `js/title.js`, and the page title, logo and ? panel all follow it.
+The name lives in one constant, `SKY.TITLE` in `js/title.js`, and the page title, logo and ? panel all follow it.
 
 ## Play
 
