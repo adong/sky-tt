@@ -4,6 +4,8 @@
 
 Press **?** any time (or tap the round **?** button on the left edge) to see the keys. The game waits while you look.
 
+Tap **中文 / EN** under it to switch between English and 中文 (the dashboard and every game remember the choice).
+
 A classic vertical shoot-'em-up for Teddy and Tommy, the kind Dad played in the arcade, made for small hands and best played together. It's built with Claude Code from plain JavaScript and Three.js, on the shared Claude Games kit.
 The brothers fly bright toy planes up the screen, each one sitting in his open cockpit and looking up at you. The plane fires by itself, so all you do is fly, dodge and catch things.
 There are no image, model or audio files: the planes, enemies and places are built from boxes and balls, every texture is painted on a canvas, and every sound is synthesised.
@@ -188,6 +190,7 @@ js/sfx.js        the game's own synth sounds and the take-off jingle
 js/art.js        canvas textures, the planes with the kids, enemies, bosses, the 10 places, effects
 js/game.js       renderer, camera, the loop, events to effects, HUD, menus, keys and touch, test hooks
 js/keys.js       the ? panel's keys (Kit.help)
+js/zh.js         the 中文 words and rules (Kit.lang): page text, toasts, banners, the ? panel and the 3D word bursts
 tools/check.js   runs js/check.js in Node (no npm)
 kit/             copy of ~/claude-games/kit (python3 ../kit/tools/sync.py .); don't edit it here
 dist/sky-tt.html the single-page build

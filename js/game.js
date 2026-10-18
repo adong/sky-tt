@@ -438,7 +438,7 @@
   }
   const POP_WORDS = ['BONK!', 'POP!', 'BOINK!', 'POW!'];
   const POWER_TOAST = {
-    double: (e) => (e.weapon === 'double' ? ['', '🏀🏀 DOUBLE SHOT!', '🏀🏀🏀 TRIPLE SHOT!', '🏀🏀🏀🏀 MEGA SHOT!'][e.lvl] : ''),
+    double: (e, P) => (e.weapon === 'double' && e.lvl ? `${SPECIAL[P.kind].emoji.repeat(e.lvl + 1)} ${['', 'DOUBLE', 'TRIPLE', 'MEGA'][e.lvl]} SHOT!` : ''),
     spread: (e) => (e.weapon === 'spread' ? ['', '🎆 SPREAD SHOT!', '🎆 BIG SPREAD!', '🎆 SUPER FAST SPREAD!'][e.lvl] : ''),
     shield: () => '🛡️ SHIELD ON!',
     magnet: () => '🧲 MAGNET! EVERYTHING COMES TO YOU!',
@@ -557,12 +557,7 @@
         break;
       case 'item': {
         const it = e.item;
-        if (it.kind === 'power') {
-          const fn = POWER_TOAST[it.ptype];
-          const P = S.players[e.player];
-          let msg = fn ? fn(e) : '';
-          if (it.ptype === 'super') msg = `${SPECIAL[P.kind].emoji} +1 ${SPECIAL[P.kind].name}!`;
-          if (msg) toast(msg, 'good', 1.8);
+        if (it.kind === 'power') { // the toast comes with the 'power' event, which knows the new weapon level
           fx.sparkle(it.x, wz(it.y), 1.6, 0.5);
           play(it.ptype === 'heart' ? 'heart' : it.ptype === 'shield' ? 'shield' : it.ptype === 'magnet' ? 'magnet' : 'power');
           bumpCard(e.player);
@@ -572,6 +567,14 @@
           st.itemStreak = Math.min(8, st.itemStreak + 1);
           if (it.kind !== 'bit' || st.itemStreak % 3 === 1) play('item', st.itemStreak);
         }
+        break;
+      }
+      case 'power': {
+        const P = S.players[e.player];
+        const fn = POWER_TOAST[e.ptype];
+        let msg = fn ? fn(e, P) : '';
+        if (e.ptype === 'super') msg = e.extra === 'full' ? `${SPECIAL[P.kind].emoji} +1000` : `${SPECIAL[P.kind].emoji} +1 ${SPECIAL[P.kind].name}!`;
+        if (msg) toast(msg, 'good', 1.8);
         break;
       }
       case 'buddyIn':
@@ -1148,7 +1151,7 @@
       c.classList.toggle('bump', bump);
       c.style.background = bump && cardBump[i].hurt ? 'rgba(255, 90, 110, 0.55)' : '';
       const b = $(`spec${i}`);
-      b.querySelector('em').textContent = String(P.specials);
+      setHtml(b.querySelector('em'), String(P.specials), String(P.specials));
       b.classList.toggle('empty', P.specials <= 0);
     });
     // companion bar and button
@@ -1173,7 +1176,7 @@
     const boss = S.boss;
     bb.classList.toggle('hidden', !boss || boss.st === 'enter');
     if (boss) {
-      $('bossName').textContent = boss.name;
+      setHtml($('bossName'), boss.name, boss.name); // only when it changes, so the 中文 translation isn't redone every frame
       bb.querySelector('i').style.setProperty('--fill', clamp(boss.hp / boss.maxHp, 0, 1).toFixed(3));
     }
   }

@@ -57,9 +57,11 @@
     return G.toTexture(c);
   }
 
-  // A comic starburst with a word in it (BONK!, POP!, SAVED!...).
+  // A comic starburst with a word in it (BONK!, POP!, SAVED!...), in English or 中文 (Kit.lang, words in js/zh.js).
+  // Each burst is drawn when it's needed, so a language switch shows on the next one.
   const burstCache = {};
-  function burstTexture(word, fill = '#ffd400') {
+  function burstTexture(en, fill = '#ffd400') {
+    const word = Kit.lang ? Kit.lang.t(en) : en;
     const key = word + fill;
     if (burstCache[key]) return burstCache[key];
     const [c, g] = G.makeCanvas(256, 256);
@@ -74,7 +76,10 @@
     g.lineWidth = 8;
     g.strokeStyle = INK;
     g.stroke();
-    g.font = `${word.length > 6 ? 36 : word.length > 5 ? 46 : 58}px ${G.FONT}`;
+    let px = word.length > 6 ? 36 : word.length > 5 ? 46 : 58;
+    g.font = `${px}px ${G.FONT}`;
+    const wide = g.measureText(word).width;
+    if (wide > 200) { px = Math.floor((px * 200) / wide); g.font = `${px}px ${G.FONT}`; } // keep long words (and 中文) inside the burst
     g.textAlign = 'center';
     g.textBaseline = 'middle';
     g.lineWidth = 10;
